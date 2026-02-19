@@ -1,0 +1,114 @@
+.receive-page {
+  width: 100%;
+}
+
+.receive-content {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transfers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.transfer-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1.25rem;
+  background: #fafafa;
+}
+
+.transfer-card + .transfer-card {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.transfer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.transfer-from {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.transfer-date {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.transfer-status {
+  margin-bottom: 0.75rem;
+}
+
+.badge-pending {
+  background: #f39c12;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.badge-warning {
+  background: #e67e22;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.transfer-form-data {
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.data-table tbody tr {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.data-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.data-table .data-key {
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  color: #7f8c8d;
+  font-weight: 500;
+  width: 40%;
+}
+
+.data-table .data-value {
+  padding: 0.5rem 0;
+  color: #2c3e50;
+}
+
+.transfer-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.btn-accept {
+  width: 100%;
+  background: #27ae60;
+}
+
+.btn-accept:hover {
+  background: #219a52;
+}
+

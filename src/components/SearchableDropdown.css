@@ -1,0 +1,110 @@
+/* Shared searchable dropdown - matches Send/Records style */
+.searchable-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.searchable-dropdown__input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.searchable-dropdown__input-row .searchable-dropdown__input,
+.searchable-dropdown__input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.searchable-dropdown__input {
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #334155;
+  font-family: inherit;
+  background-color: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.searchable-dropdown__input:hover {
+  border-color: #cbd5e1;
+  background-color: #fafbfc;
+}
+
+.searchable-dropdown__input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  background-color: #fff;
+}
+
+.searchable-dropdown__input::placeholder {
+  color: #94a3b8;
+}
+
+.searchable-dropdown__input:disabled {
+  background-color: #f1f5f9;
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.searchable-dropdown__input.error {
+  border-color: #dc2626;
+}
+
+.searchable-dropdown__list {
+  position: absolute;
+  z-index: 100;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  min-width: 100%;
+  max-height: 280px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.searchable-dropdown__item {
+  padding: 0.6rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.searchable-dropdown__item:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+.searchable-dropdown__item[aria-selected="true"] {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.searchable-dropdown__item[aria-selected="true"]:hover {
+  background-color: #dbeafe;
+}
+
+.searchable-dropdown__item--empty {
+  color: #64748b;
+  cursor: default;
+}
+
+.searchable-dropdown__item--empty:hover {
+  background: transparent;
+  color: #64748b;
+}
