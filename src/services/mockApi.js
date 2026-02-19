@@ -46,6 +46,39 @@ const initializeUsers = () => {
     }
   })
 
+  // Ensure there is a secretary account for each configured recipient division.
+  try {
+    initializeRecipients()
+    const recipients = JSON.parse(localStorage.getItem(RECIPIENTS_KEY) || '[]')
+    const divisions = (recipients || [])
+      .filter(r => r && r.name && r.id !== 'default-user-recipient')
+      .map(r => String(r.name).trim())
+
+    const slugify = (s) => String(s || '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+
+    divisions.forEach(divName => {
+      const username = `secretary-${slugify(divName)}`
+      if (!users.some(u => u.username && u.username.toLowerCase() === username.toLowerCase())) {
+        const newUser = {
+          id: Date.now().toString() + Math.floor(Math.random() * 1000).toString(),
+          name: `Secretary - ${divName}`,
+          username,
+          password: 'password',
+          role: 'secretary',
+          division: divName,
+          createdAt: new Date().toISOString()
+        }
+        users.push(newUser)
+        byUsername[newUser.username] = newUser
+      }
+    })
+  } catch (e) {
+    // ignore initialization errors here
+  }
+
   localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users))
 }
 
@@ -361,8 +394,35 @@ const initializeRecipients = () => {
       name: DEFAULT_USER_RECIPIENT_NAME,
       createdAt: new Date().toISOString()
     })
-    localStorage.setItem(RECIPIENTS_KEY, JSON.stringify(list))
   }
+
+  // Ensure core divisions exist as recipients (so users can be assigned to them).
+  const DEFAULT_DIVISIONS = [
+    'Administration Division',
+    'Consumer Affairs Division',
+    'Corporate Affairs Division',
+    'Cybersecurity Division',
+    'Engineering Division',
+    'Finance Division',
+    'Human Resource Division',
+    'Information Technology Division',
+    'Internal Audit Division',
+    'Legal Division',
+    'Procurement and Protocol Division',
+    'Regional Operations Division',
+    'Regulatory Administration Division',
+    'Research, Innovation, Policy and Strategy Division',
+    'Director General',
+    'Reception'
+  ]
+
+  DEFAULT_DIVISIONS.forEach(name => {
+    if (!list.some(r => String(r.name).trim() === String(name).trim())) {
+      list.push({ id: Date.now().toString() + Math.floor(Math.random() * 1000).toString(), name, createdAt: new Date().toISOString() })
+    }
+  })
+
+  localStorage.setItem(RECIPIENTS_KEY, JSON.stringify(list))
 }
 
 export const getRecipients = () => {
