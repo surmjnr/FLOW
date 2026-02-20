@@ -17,10 +17,10 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check for stored session
-    const storedUser = localStorage.getItem('nca_user')
-    if (storedUser) {
-      setUser(JSON.parse(storedUser))
-    }
+    // const storedUser = localStorage.getItem('nca_user')
+    // if (storedUser) {
+    //   setUser(JSON.parse(storedUser))
+    // }
     setLoading(false)
   }, [])
 
