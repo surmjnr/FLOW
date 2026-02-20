@@ -455,6 +455,11 @@
   margin: 0;
 }
 
+.config-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .config-users-add-form {
   margin-bottom: 1.5rem;
 }

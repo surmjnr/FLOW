@@ -67,7 +67,23 @@ npm install
 npm run dev
 ```
 
-The application opens at `http://localhost:5173` (or the port shown).
+The application opens at `http://localhost:3002` (or the port shown). The dev server port is set in `vite.config.js`.
+
+## Deployment (GitHub Pages)
+
+This project is configured to deploy to GitHub Pages using the `gh-pages` package.
+
+- Build and publish:
+
+```bash
+npm run build
+npm run deploy
+```
+
+- The deploy script publishes the `dist` folder to the `gh-pages` branch. In the repository Settings → Pages, set the source to the `gh-pages` branch (root) if needed.
+- If your repo is `surmjnr/FLOW`, the site will be available at: `https://surmjnr.github.io/FLOW/`.
+
+Note: `vite.config.js` includes `base: '/FLOW/'` to ensure assets load correctly when hosted under that path.
 
 ## Usage
 
@@ -89,6 +105,31 @@ The application opens at `http://localhost:5173` (or the port shown).
 | User      | `marketing`| `password`| Marketing  |
 
 All regular users use password `password` except Admin (`admin`/`admin`).
+
+### Seeded secretary accounts
+
+When the app initializes recipients, it also seeds a secretary account for each division. Each account uses the default password `password`.
+
+Examples of secretary usernames created (username / password):
+
+- `secretary-administration-division` / `password`
+- `secretary-consumer-affairs-division` / `password`
+- `secretary-corporate-affairs-division` / `password`
+- `secretary-cybersecurity-division` / `password`
+- `secretary-engineering-division` / `password`
+- `secretary-finance-division` / `password`
+- `secretary-human-resource-division` / `password`
+- `secretary-information-technology-division` / `password`
+- `secretary-internal-audit-division` / `password`
+- `secretary-legal-division` / `password`
+- `secretary-procurement-and-protocol-division` / `password`
+- `secretary-regional-operations-division` / `password`
+- `secretary-regulatory-administration-division` / `password`
+- `secretary-research-innovation-policy-and-strategy-division` / `password`
+- `secretary-director-general` / `password`
+- `secretary-reception` / `password`
+
+If you previously ran the app and users are already stored in LocalStorage, open DevTools → Application → Local Storage and remove the `nca_users_data` key (and `nca_recipients` if needed), then reload to force re-initialization and seeding.
 
 ### Flow
 

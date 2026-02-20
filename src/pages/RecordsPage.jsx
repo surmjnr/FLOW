@@ -46,7 +46,7 @@ const RecordsPage = () => {
           getUsers()
         ])
         const divisionList = (recipients || []).filter(
-          r => r.id !== defaultUserRecipientId
+          r => r.id !== defaultUserRecipientId && r.name !== user?.division
         )
         setDivisions(divisionList)
         if (isAdmin()) {

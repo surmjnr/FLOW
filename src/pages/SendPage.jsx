@@ -35,7 +35,7 @@ const SendPage = () => {
   }, [user?.division])
 
   const userRecipientId = getDefaultUserRecipientId()
-  const divisionRecipients = recipients.filter(r => r.id !== userRecipientId)
+  const divisionRecipients = recipients.filter(r => r.id !== userRecipientId && r.name !== user?.division)
   const formForUserRecipient = getFormForRecipient(userRecipientId)
   const formForDivision = selectedRecipientId ? getFormForRecipient(selectedRecipientId) : null
   const linkedForm = selectedInternalId ? formForUserRecipient : formForDivision
