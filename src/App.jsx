@@ -29,7 +29,7 @@ function App() {
     <AuthProvider>
       <DocumentProvider>
         <ConfigProvider>
-          <Router>
+          <Router basename="/FLOW">
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route
