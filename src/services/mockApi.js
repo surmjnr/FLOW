@@ -75,6 +75,24 @@ const initializeUsers = () => {
         byUsername[newUser.username] = newUser
       }
     })
+
+    // Ensure there is a user account for each configured recipient division.
+    divisions.forEach(divName => {
+      const username = slugify(divName)
+      if (!users.some(u => u.username && u.username.toLowerCase() === username.toLowerCase())) {
+        const newUser = {
+          id: Date.now().toString() + Math.floor(Math.random() * 1000).toString(),
+          name: `${divName} User`,
+          username,
+          password: 'password',
+          role: 'user',
+          division: divName,
+          createdAt: new Date().toISOString()
+        }
+        users.push(newUser)
+        byUsername[newUser.username] = newUser
+      }
+    })
   } catch (e) {
     // ignore initialization errors here
   }
