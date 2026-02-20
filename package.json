@@ -2,6 +2,7 @@
   "name": "flow",
   "version": "1.0.0",
   "description": "Physical document tracking system for business organization",
+  "homepage": "https://surmjnr.github.io/FLOW",
   "private": true,
   "dependencies": {
     "date-fns": "^2.30.0",
