@@ -17,10 +17,10 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check for stored session
-    // const storedUser = localStorage.getItem('nca_user')
-    // if (storedUser) {
-    //   setUser(JSON.parse(storedUser))
-    // }
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
     setLoading(false)
   }, [])
 
@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
       const response = await apiLogin(username, password)
       if (response.success) {
         setUser(response.user)
-        localStorage.setItem('nca_user', JSON.stringify(response.user))
+        localStorage.setItem("user", JSON.stringify(response.user))
         return { success: true }
       } else {
         return { success: false, error: response.error || 'Login failed' }
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null)
-    localStorage.removeItem('nca_user')
+    localStorage.removeItem("user")
   }
 
   const isAdmin = () => {
